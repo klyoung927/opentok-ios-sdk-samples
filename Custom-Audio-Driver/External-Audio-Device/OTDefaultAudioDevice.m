@@ -441,7 +441,7 @@ static bool CheckError(OSStatus error, NSString* function) {
     
     NSError *error = nil;
     NSUInteger audioOptions = 0;
-#if !(TARGET_OS_TV)
+#if !(false)
     audioOptions |= AVAudioSessionCategoryOptionAllowBluetooth ;
     audioOptions |= AVAudioSessionCategoryOptionDefaultToSpeaker;
     [mySession setCategory:AVAudioSessionCategoryPlayAndRecord
@@ -878,6 +878,18 @@ static OSStatus playout_cb(void *ref_con,
 }
 
 
+/*kennon test*/
+
+- (BOOL)changeSettings
+{
+    if (YES) {
+        NSLog(@"In change settings");
+    }
+    
+    return NO;
+}
+
+
 - (BOOL)detectCurrentRoute
 {
     // called on startup to initialize the devices that are available...
@@ -926,6 +938,8 @@ static OSStatus playout_cb(void *ref_con,
 
 - (BOOL)configureAudioSessionWithDesiredAudioRoute:(NSString*)desiredAudioRoute
 {
+    NSLog(@"I am in configure");
+    
     OT_AUDIO_DEBUG(@"configureAudioSessionWithDesiredAudioRoute %@",desiredAudioRoute);
     
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
@@ -954,7 +968,7 @@ static OSStatus playout_cb(void *ref_con,
     if ([AUDIO_DEVICE_SPEAKER isEqualToString:desiredAudioRoute]) {
         // replace AudiosessionSetProperty (deprecated from iOS7) with
         // AVAudioSession overrideOutputAudioPort
-#if !(TARGET_OS_TV)
+#if !(false)
         [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker
                                         error:&err];
 #endif
@@ -992,10 +1006,12 @@ static OSStatus playout_cb(void *ref_con,
     
     AudioComponentDescription audio_unit_description;
     audio_unit_description.componentType = kAudioUnitType_Output;
-    
-#if !(TARGET_OS_TV)
+   NSLog(@"this is the sample rate %d", kSampleRate);
+#if !(true)
+    NSLog(@"In yes man");
     audio_unit_description.componentSubType = kAudioUnitSubType_VoiceProcessingIO;
 #else
+    NSLog(@"In no man");
     audio_unit_description.componentSubType = kAudioUnitSubType_RemoteIO;
 #endif
     

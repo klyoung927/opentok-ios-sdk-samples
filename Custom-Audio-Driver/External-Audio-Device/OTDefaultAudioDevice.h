@@ -59,4 +59,6 @@
 
 - (BOOL)setPlayOutRenderCallback:(AudioUnit)unit;
 
+- (BOOL)setupAudioUnit:(AudioUnit)unit;
+
 @end

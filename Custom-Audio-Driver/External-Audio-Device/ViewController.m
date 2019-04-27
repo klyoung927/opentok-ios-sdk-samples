@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import <OpenTok/OpenTok.h>
 #import "OTDefaultAudioDeviceWithVolumeControl.h"
+//#import "OTDefaultAudioDevice.h"
 
 @interface ViewController() <OTSessionDelegate, OTSubscriberKitDelegate, OTPublisherDelegate>
 @property (nonatomic) OTSession *session;
@@ -22,11 +23,11 @@ static double widgetWidth = 320;
 // *** Fill the following variables using your own Project info  ***
 // ***          https://dashboard.tokbox.com/projects            ***
 // Replace with your OpenTok API key
-static NSString* const kApiKey = @"";
+static NSString* const kApiKey = @"46317692";
 // Replace with your generated session ID
-static NSString* const kSessionId = @"";
+static NSString* const kSessionId = @"1_MX40NjMxNzY5Mn5-MTU1NjIzMjQ2MDA4OX5ac0Vvak83cHpBT3IvS2tWM3I2TG5vUmh-fg";
 // Replace with your generated token
-static NSString* const kToken = @"";
+static NSString* const kToken = @"T1==cGFydG5lcl9pZD00NjMxNzY5MiZzaWc9OGE2Yjc3M2JmNTE2YzZjOTljMjFmNTIzMjcwYzBjOGJhNDA5NWI0MDpzZXNzaW9uX2lkPTFfTVg0ME5qTXhOelk1TW41LU1UVTFOakl6TWpRMk1EQTRPWDVhYzBWdmFrODNjSHBCVDNJdlMydFdNM0kyVEc1dlVtaC1mZyZjcmVhdGVfdGltZT0xNTU2MjMyNDkwJm5vbmNlPTAuMzUzMzc2NTc5MTI0NDE4MzMmcm9sZT1tb2RlcmF0b3ImZXhwaXJlX3RpbWU9MTU1ODgyNDQ5MCZpbml0aWFsX2xheW91dF9jbGFzc19saXN0PQ==";
 
 #pragma mark - View lifecycle
 
@@ -34,9 +35,20 @@ static NSString* const kToken = @"";
 {
     [super viewDidLoad];
     
+    
     OTDefaultAudioDeviceWithVolumeControl* audioDevice =
     [OTDefaultAudioDeviceWithVolumeControl new];
     [OTAudioDeviceManager setAudioDevice:audioDevice];
+    
+    
+
+    //importing class
+    //[[[OTDefaultAudioDeviceWithVolumeControl alloc] init] setPlayoutVolume:(1.0)];
+    
+    //OTDefaultAudioDevice* default = [OTDefaultAudioDevice new];
+    NSString *myString = @"something";
+    
+//  [[[OTDefaultAudioDevice alloc] init] configureAudioSessionWithDesiredAudioRoute:(myString)];
     
     // Step 1: As the view comes into the foreground, initialize a new instance
     // of OTSession and begin the connection process.

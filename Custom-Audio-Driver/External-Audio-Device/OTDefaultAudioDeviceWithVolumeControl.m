@@ -105,6 +105,8 @@
 
 -(void)setPlayoutVolume:(float)value;
 {
+    NSLog(@"sanity test");
+    
     if(mixerUnit)
     {
         AudioUnitSetParameter(mixerUnit, kMultiChannelMixerParam_Volume,
